@@ -13,10 +13,10 @@ import javax.crypto.spec.SecretKeySpec;
 import org.tbot.internal.handlers.LogHandler;
 import org.tbot.util.TEnvironment;
 
-public class SigSnippet {
+public class SigSnippet { 
 	public static boolean sendSignatureData(long runtimeInSeconds, int var1, int var2, int var3, int var4) {
 
-		// In order to provide some security, so that people will not tamper the data and post it themselves, we will be encrypting it here and decrypting it in php.
+		// In order to provide some security, so that people will not tamper the data and post it themselves, avoiding a fake database, we will be encrypting it here and decrypting it in php.
 		// These keys should be the same as in PHP (db.php) (16bit long)
 		String privateKey = "2b27az10je1abdui";
 		String initVector = "255c973habsskdfa";
