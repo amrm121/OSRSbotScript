@@ -27,18 +27,19 @@ import gui.Gui;
 import control.Controller;
 import control.Node;
 import control.SigSnippet;
+//principal class which loads everything needed to run the script
 @Manifest(name = "Cheddar's Pro Fletcher", authors = "Cheddar", description = "Task system, craft and string all longbows and shortbows! [Also auto 1-55]", category = org.tbot.internal.ScriptCategory.FLETCHING, version = 1.3)
 public class MainHandler extends AbstractScript implements MessageListener, PaintListener, MouseListener{
 	static Gui frame = new Gui();
 	private MouseTrail mt = new MouseTrail();
-	public static boolean start = false, refil = false, refilString = false, random = false, drawM = false, oS = false, randomize = false;
+	public static boolean start = false, refil = false, refilString = false, random = false, drawM = false, oS = false, randomize = false; //node control variables, like a state machine I decide wether to go based on my actual state and actions perfomed by it.
 	public static  String actualLog = "a ", actualBow = "";
 	private static long currentTime, startTime, stRTime, mSTime;
 	private int startXP, gainedXP, iPerHour, fPerHour;
 	public static int startBow = 0, startString = 0, startLevel = 0, finalLevel, finalItens, mR, nR;
-	private static Controller controller = new Controller();
+	private static Controller controller = new Controller(); //node control function start, it allows the player to select tasks to do, like up from level 1-50 in fletching automatically, the resources needed for this are cointainded in my forum post.
 	
-	public static String getBow(){
+	public static String getBow(){ //get the actual bow to me made, decided by the GUI
 		int b = actualLog.indexOf(' ');
 		String a = "";
 		if(b == -1){
@@ -54,16 +55,16 @@ public class MainHandler extends AbstractScript implements MessageListener, Pain
 	public static String getLog(){
 		return actualLog;
 	}
-	public static void randomMouse(){
+	public static void randomMouse(){  //random mouse movement
 		long millis = System.currentTimeMillis() - mSTime;
-		long minute = (millis / (1000 * 60)) % 60;
+		long minute = (millis / (1000 * 60)) % 60; 
 		if (minute == mR){
 			Mouse.moveRandomly();
 			mSTime = System.currentTimeMillis();
 			mR = Random.nextInt(1, 3);
 		}
 	}
-	public static void randomNode(){
+	public static void randomNode(){ //random node for more human behavior
 		long millis = System.currentTimeMillis() - stRTime;
 		long minute = (millis / (1000 * 60)) % 60;
 		if (minute == nR){
@@ -72,7 +73,7 @@ public class MainHandler extends AbstractScript implements MessageListener, Pain
 			nR = Random.nextInt(4, 8);
 		}
 	}
-	public static void setControl(Controller controller){
+	public static void setControl(Controller controller){ //defining my node controller
 		MainHandler.controller = controller;
 	}
 	public static void setActualLog(String a){
@@ -89,7 +90,7 @@ public class MainHandler extends AbstractScript implements MessageListener, Pain
 	}
 
 	@Override
-	public void messageReceived(MessageEvent ME) {
+	public void messageReceived(MessageEvent ME) { //console messages to help the user seeing what is happening
 		 if (ME.getMessage().getText().contains("You carefully cut the wood into a longbow.")) {
 			 startBow++;
         }else if(ME.getMessage().getText().contains("You carefully cut the wood into a shortbow.")){
@@ -103,7 +104,7 @@ public class MainHandler extends AbstractScript implements MessageListener, Pain
         }
 	}
 	
-	public boolean onStart(){	
+	public boolean onStart(){ // THE FIRST function to be called by the bot, it starts all the variables I need
 		startTime = stRTime = mSTime = System.currentTimeMillis(); 
 		mR = Random.nextInt(2, 3);
 		nR = Random.nextInt(4, 8);
@@ -132,7 +133,7 @@ public class MainHandler extends AbstractScript implements MessageListener, Pain
 	//END Cursos settings -- 
 	
 	@Override
-	public int loop() {
+	public int loop() { //
 		if(!start){ startTime = stRTime = mSTime = System.currentTimeMillis(); }
 		randomMouse();
 		randomNode();
@@ -153,11 +154,11 @@ public class MainHandler extends AbstractScript implements MessageListener, Pain
 	public void onFinish(){
 		long millis = System.currentTimeMillis() - startTime;
 		long second = (millis / 1000);
-		SigSnippet.sendSignatureData(second, startBow+startString, gainedXP, 0, 0);
+		SigSnippet.sendSignatureData(second, startBow+startString, gainedXP, 0, 0); //SigSnippet was a RasPi server I made at home with a DB to keep saved user's time and xp gained within the use of script.
 		LogHandler.log("Thank you for using Cheddar's Pro Fletcher, you got: " + gainedXP +" fletching experience.");
 	}
 	
-	private String timeRunning(){
+	private String timeRunning(){ //the actual time running since the script has started
 		long millis = currentTime = System.currentTimeMillis() - startTime;
 		long second = (millis / 1000) % 60;
 		long minute = (millis / (1000 * 60)) % 60;
@@ -167,7 +168,7 @@ public class MainHandler extends AbstractScript implements MessageListener, Pain
 	}
 	
 	@Override
-	public void onRepaint(final Graphics g){  
+	public void onRepaint(final Graphics g){  //Little GUI updates in runtime
 		String node = "";
 		Node n = controller.getCurrentNode();
 		if(n != null) node = n.getName();
