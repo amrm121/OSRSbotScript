@@ -10,6 +10,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+//topBot is deprecated, the site doesn't run anymore.
 import org.tbot.bot.TBot;
 import org.tbot.graphics.MouseTrail;
 import org.tbot.internal.AbstractScript;
