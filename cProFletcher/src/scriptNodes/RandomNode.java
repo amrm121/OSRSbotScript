@@ -15,15 +15,15 @@ import org.tbot.wrappers.WidgetChild;
 
 import control.Node;
 
-public class RandomNode extends Node{
+public class RandomNode extends Node{ //Node whereas I decide the look-like human movement in-game
 	private String random = "";
    
-    private void HoverSkill(){
+    private void HoverSkill(){ //show my actual skill progress by moving my mouse with a random path (not a line directly to the skill icon) simulating a better human behavior
     	MainHandler.drawM = true;
     	random += " Hover fletching";
     	WidgetChild skillTab = Widgets.getWidget(548, 43); //Skills tab in hud
     	WidgetChild skillKind = Widgets.getWidget(320, 14); //Skill slots
-    	if(!skillKind.isVisible()){
+    	if(!skillKind.isVisible()){ //check if the skill tab is open, if not open it
     		skillTab.click();
     		Time.sleep(100, 200);
     		Point a = skillKind.getLocation();
@@ -40,7 +40,7 @@ public class RandomNode extends Node{
     	MainHandler.drawM = false;
     }
     
-    private void MoveCamera(){
+    private void MoveCamera(){ 
     	random += " Moving camera";
     	Camera.rotateRandomly();
     	Time.sleep(30, 150);
@@ -69,7 +69,7 @@ public class RandomNode extends Node{
 
 	@Override
 	public void execute() {
-		int op = MainHandler.getR();
+		int op = MainHandler.getR(); //get random number from MainHandler to decide which random action will execute
 		switch(op){
 		case 1:
 			HoverSkill();
