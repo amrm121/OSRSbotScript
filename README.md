@@ -1,5 +1,7 @@
-# topBotScripts
+# the Script
 cProFletcher - A script based in tasks and priority nodes (using round robin) to define the user's next action. 
+
+# For new Scripts - [OSBot](https://osbot.org/)
 
 # What was the differential
   - You could start from skill 0 using an ready-to-go button which just needed the resources in the bank. And you would stop at level **85 in fletching**. And add a task to make *n* MLongBow's aftewards.
@@ -10,6 +12,7 @@ cProFletcher - A script based in tasks and priority nodes (using round robin) to
     - The [action node](https://github.com/amrm121/OSRStopBot/tree/master/cProFletcher/src/scriptNodes) always beeing checked by the [Node Controller](https://github.com/amrm121/OSRStopBot/blob/master/cProFletcher/src/control/Controller.java) is the action that **must be running**. 
     - Human behavior was added by some random clicks, logouts, moves and it worked for a while before university became the priority and I couldn't continue in this project.
 
-# TopBot is DEPRECATED
+# This Script is DEPRECATED
+## New scripts coming soon from [OSBot](https://osbot.org/)
 It's library derived from reverse engineering with ASM and the original client to retrieve bytecodes for each action and status that the client game sent to server.
 Will try to retrieve it by my old computer and my RasPi which had a DB containing user's spent time and xp gained while using my script. Then it generates an image containing, the user spent time, xp gained, gold made (by market price and bows made), bows made and it's forum user name. Also it could generate the "Master Image" which I used to marketing, that contained the data of ALL users, all time spent, bows made and etc...
