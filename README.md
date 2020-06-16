@@ -1,7 +1,7 @@
-# the Script
+### the Script
 cProFletcher - A script based in tasks and priority nodes (using round robin) to define the user's next action. 
 
-# For new Scripts - [OSBot](https://osbot.org/)
+#### For new Scripts - [OSBot](https://osbot.org/)
 
 # What was the differential
   - You could start from skill 0 using an ready-to-go button which just needed the resources in the bank. And you would stop at level **85 in fletching**. And add a task to make *n* MLongBow's aftewards.
