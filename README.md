@@ -2,7 +2,7 @@
 cProFletcher - A script based in tasks and priority nodes (using round robin) to define the user's next action. 
 
 # What was the differential
-  - You could start from skill 0 using an ready-to-go button which just needed the resources in the bank. And you would stop at
+  - You could start from skill 0 using an ready-to-go button which just needed the resources in the bank. And you would stop at level **85 in fletching**. And add a task to make *n* MLongBow's aftewards.
   - If you just wanted to make a item using fletching skill to sell on the GE, you could just add the nodes of making the desired item from a dropDown list. 
   > _**It caused a big drop in prices while the script was functional. It had almost 20 players simutaneously using the script 24/7 and a ban rate of almost 5-10% because of the Node System implemented.**_
   - It had a round robin algorithm running through action nodes _(use bank, craft...)_, and each node had a priority value.
